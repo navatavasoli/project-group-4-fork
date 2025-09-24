@@ -4,7 +4,7 @@ public class Student extends User {
     public Student(String firstName, String lastName, String email, String phoneNumber, String program) {
         super(firstName, lastName, email, phoneNumber);
         this.program = program;
-    }
+    }https://github.com/uOttawaSEG/project-group-4.git
 
     // getters and setters
     public String getProgram() {
