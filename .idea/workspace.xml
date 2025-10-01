@@ -40,6 +40,11 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/logout_screen.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/studentinformation.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
@@ -56,7 +61,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Created logout screen.">
+    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Updated chooserole.xml.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -277,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759345954328</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Updated chooserole.xml.">
+      <option name="closed" value="true" />
+      <created>1759346781852</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759346781852</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -287,7 +300,8 @@
     <MESSAGE value="Updated landing page." />
     <MESSAGE value="Moved register button." />
     <MESSAGE value="Created logout screen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created logout screen." />
+    <MESSAGE value="Updated chooserole.xml." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated chooserole.xml." />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
