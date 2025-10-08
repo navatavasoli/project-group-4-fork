@@ -62,8 +62,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Updated landing page.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/DashboardActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/chooserole.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +75,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/chelseagoddard/.android/avd/Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\navat\.android\avd\Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -319,19 +321,20 @@
     <MESSAGE value="Added Firebase database." />
     <MESSAGE value="Attempted to repair GitHub merging issues." />
     <MESSAGE value="Updated landing page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated landing page." />
+    <MESSAGE value="Added admin login page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added admin login page." />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.logintest.domain">
           <value>
-            <CheckInfo lastCheckTimestamp="1759853496790" />
+            <CheckInfo lastCheckTimestamp="1759949315992" />
           </value>
         </entry>
         <entry key="com.example.logintest.domain.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1759853496788" />
+            <CheckInfo lastCheckTimestamp="1759949315996" />
           </value>
         </entry>
       </map>
