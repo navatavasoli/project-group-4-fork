@@ -23,6 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Add more activities as needed -->
+        <activity android:name=".TutorInfoActivity" />
+        <activity android:name=".StudentInfoActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".AdminActivity" />
+
     </application>
 
 </manifest>

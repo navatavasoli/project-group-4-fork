@@ -32,13 +32,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Tutor Register button
     public void goToTutorRegistration(View view) {
-        Intent intent = new Intent(this, TutorInfoActivity.class);
+        Intent intent = new Intent(MainActivity.this, TutorInfoActivity.class);
         startActivity(intent);
     }
 
     // Student Register button
     public void goToStudentRegistration(View view) {
         Intent intent = new Intent(this, StudentInfoActivity.class);
+        startActivity(intent);
+    }
+
+    //Admin login button
+    public void goToAdminLogin(View view) {
+        Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);
     }
 }
