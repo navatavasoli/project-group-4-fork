@@ -23,26 +23,24 @@ public class AdminActivity extends AppCompatActivity {
         adminKeyEditText = findViewById(R.id.adminKey);
         adminLoginButton = findViewById(R.id.adminLoginButton);
 
-        /**
-         * Listen for admin key during login
-         */
         adminLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String enteredKey = adminKeyEditText.getText().toString();
-                // correct key
+                // Use .trim() to remove leading/trailing whitespace
+                String enteredKey = adminKeyEditText.getText().toString().trim();
                 if (enteredKey.equals(ADMIN_KEY)) {
-                    Intent intent = new Intent(AdminActivity.this, AdminActivity.class);
+                    // Key is correct, navigate to the dashboard
+                    Intent intent = new Intent(AdminActivity.this, DashboardActivity.class);
                     startActivity(intent);
-                    // incorrect key
                 } else {
+                    // Key is incorrect, show an error message
                     Toast.makeText(AdminActivity.this, "Invalid Admin Key", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    // go to the home screen
+    // Method to go to the home screen
     public void goToHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
