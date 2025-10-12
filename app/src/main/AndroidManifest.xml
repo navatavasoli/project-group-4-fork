@@ -27,7 +27,6 @@
         <activity android:name=".StudentInfoActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".HomepageActivity" />
         <activity android:name=".LogOutPageActivity" />
 
     </application>
