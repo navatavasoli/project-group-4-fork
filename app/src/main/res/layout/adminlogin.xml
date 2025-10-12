@@ -34,7 +34,7 @@
         android:ems="10"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="216dp" />
+        tools:layout_editor_absoluteY="258dp" />
 
     <Button
         android:id="@+id/adminLoginButton"
