@@ -2,12 +2,27 @@ package com.example.logintest.domain;
 
 import android.os.Bundle;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class TutorInfoActivity extends AppCompatActivity {
+
+    // Database services
+    DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
 
     // Variables for each input field
     EditText firstNameInput;
@@ -34,17 +49,21 @@ public class TutorInfoActivity extends AppCompatActivity {
         coursesInput = findViewById(R.id.tutor_courses);
         submitButton = findViewById(R.id.submit_tutor_btn);
 
+        // Initialize  both firebase services
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+
         // When user clicks submit button
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkForErrors();
+                validateAndRegisterUser();
             }
         });
     }
 
     // Check if all fields are filled correctly
-    void checkForErrors() {
+    boolean checkForErrors() {
         // Get what the user typed and removed extra spaces
         String firstName = firstNameInput.getText().toString().trim();
         String lastName = lastNameInput.getText().toString().trim();
@@ -161,12 +180,64 @@ public class TutorInfoActivity extends AppCompatActivity {
             }
 
         }
+        return everythingOK;
+    }
 
-        // If everything is good, go to the Dashboard
-        if (everythingOK) {
-            Intent intent = new Intent(this, DashboardActivity.class);
-            startActivity(intent);
-            finish(); // Close the registration screen
+    void validateAndRegisterUser(){
+        if (!checkForErrors()){
+            Toast.makeText(TutorInfoActivity.this, "Registration failed, please correct the fields marked in red", Toast.LENGTH_SHORT).show();
+            return;
         }
+        String email=emailInput.getText().toString().trim();
+        String password=passwordInput.getText().toString().trim();
+        String firstName=firstNameInput.getText().toString().trim();
+        String lastName=lastNameInput.getText().toString().trim();
+        String phone=phoneInput.getText().toString().trim();
+        String degree=degreeInput.getText().toString().trim().toLowerCase();
+        String courses=coursesInput.getText().toString().trim().toLowerCase();
+
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                Log.d("Firebase authentication", "Registration successful for:" + email);
+                Toast.makeText(TutorInfoActivity.this, "Authentification successful", Toast.LENGTH_SHORT).show();
+
+                //Create user's ID
+                String userId = mAuth.getCurrentUser().getUid();
+                //Create a list of courses for the constructor
+                List<String> courseList= Arrays.asList(courses.split("\\s*,\\s*"));
+                //Create an instance of Tutor class
+                Tutor tutor = new Tutor(firstName, lastName, email, phone, degree, courseList);
+
+                //Save the tutor's data to firebase
+                databaseReference.child("tutors").child(userId).setValue(tutor).addOnCompleteListener(this, dbTask -> {
+                    if (dbTask.isSuccessful()) {
+                        Log.d("Firebase database", "Tutor data created for"+userId);
+                        Toast.makeText(TutorInfoActivity.this, "Tutor registered successfully", Toast.LENGTH_SHORT).show();
+                        //Go to dashboard if registration is successful
+                        Intent intent = new Intent(this, DashboardActivity.class);
+                        startActivity(intent);
+                        finish(); // Close the registration screen
+                    }
+                    else{
+                        Log.w("Firebase database", "Tutor account creation failed", dbTask.getException());
+                        Toast.makeText(TutorInfoActivity.this, "Tutor registration failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            else{ //Authentication failed if task.isSuccessful() is false
+                Log.w("Firebase authentification", "Registration failed", task.getException());
+                //Check if account already exists
+                if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                    emailInput.setError("This email address is already in use");
+                    Toast.makeText(TutorInfoActivity.this, "This email address is already in use by another account", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TutorInfoActivity.this, "Click on Go to Home to login", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    //If the tutor has trouble w Internet or Firebase has a temporary issue
+                    Toast.makeText(TutorInfoActivity.this, "Registration failed, try again", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        });
     }
 }
