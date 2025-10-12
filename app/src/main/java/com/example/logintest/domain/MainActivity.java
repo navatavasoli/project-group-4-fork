@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -82,31 +83,39 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    void validateAndLoginUser() {
+    boolean checkForErrors() {
         //Get what the user typed and removed extra spaces
         String usernameInput = username.getText().toString().trim();
         String passwordInput = password.getText().toString().trim();
-
-
-        //Check username
+        boolean everythingOK = true;
         if (usernameInput.isEmpty()) {
             username.setError("Username (email) is required");
             username.requestFocus();
-            return;
+            everythingOK = false;
         }
+        /* not necessary bc Firebase's signInWithEmailAndPassword already handles this
         if (!usernameInput.contains("@") || !usernameInput.contains(".")) {
             username.setError("Please enter a valid email address");
-            return;
+            everythingOK = false;
         }
+        */
 
         //Check password
         if (passwordInput.isEmpty()) {
             password.setError("Password is required");
             password.requestFocus();
+            everythingOK = false;
+        }
+        return everythingOK;
+    }
+
+    void validateAndLoginUser() {
+        if (!checkForErrors()) {
+            Toast.makeText(MainActivity.this, "Login failed, please correct the fields marked in red", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        String usernameInput = username.getText().toString().trim();
+        String passwordInput = password.getText().toString().trim();
         //Verify if the user exists
         mAuth.signInWithEmailAndPassword(usernameInput, passwordInput).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {
@@ -114,9 +123,31 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                 goToDashboard(null);
             }
-            else {
-                Log.w("Firebase authentification", "Login failed", task.getException());
-                Toast.makeText(MainActivity.this, "Not an account, please register. If you already have an account, try again.", Toast.LENGTH_LONG).show();
+            else{
+                Log.w("Firebase authentication", "Login failed", task.getException());
+                try {
+                    String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+                    switch (errorCode) {
+                        case "ERROR_INVALID_EMAIL":
+                            username.setError("Invalid email address");
+                            username.requestFocus();
+                            Toast.makeText(MainActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                            break;
+                        //It seems that there isn't a specific error code for user not found (email not in DB) or for wrong password,
+                        //apparently it was for security reasons so the error case below is used instead.
+                        case "ERROR_INVALID_CREDENTIAL":
+                            Toast.makeText(MainActivity.this, "Incorrect email or password. If you don't have an account, please register", Toast.LENGTH_SHORT).show();
+                            break;
+                        default:
+                            Toast.makeText(MainActivity.this, "Login failed, please try again", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+                catch (Exception e){
+                    Log.e("Firebase authentication", "An unexpected error occurred", e);
+                    Toast.makeText(MainActivity.this, "An unexpected error occurred, try again", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
