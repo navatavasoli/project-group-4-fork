@@ -5,7 +5,7 @@
     <string name="logout_button_text">Log Out</string>
     <string name="logout_text">You have successfully logged out</string>
 
-    <string name="student_info_header">Please Enter Your Student Information Below</string>
+    <string name="student_info_header">Please Enter Your Student Information</string>
     <string name="first_name_hint">First Name</string>
     <string name="last_name_hint">Last Name</string>
     <string name="email_hint">Email Address (username)</string>
