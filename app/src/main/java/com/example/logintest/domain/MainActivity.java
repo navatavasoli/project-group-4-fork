@@ -88,12 +88,6 @@ public class MainActivity extends AppCompatActivity {
             username.requestFocus();
             everythingOK = false;
         }
-        /* not necessary bc Firebase's signInWithEmailAndPassword already handles this
-        if (!usernameInput.contains("@") || !usernameInput.contains(".")) {
-            username.setError("Please enter a valid email address");
-            everythingOK = false;
-        }
-        */
 
         //Check password
         if (passwordInput.isEmpty()) {
