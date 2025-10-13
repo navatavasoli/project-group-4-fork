@@ -46,14 +46,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Constrained vertically OTAMS Homepage TextView in loginorregister.xml">
+    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Fixed the TutorInfoActivity.java, DashboardActivity.java, LogOutPageActivity.java, and StudentInfoActivity.java files because they did not have the onClick methods called for the buttons, which did not lead them to the correct page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/AdminActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/AdminActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/DashboardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/LogOutPageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/LogOutPageActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/StudentInfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/StudentInfoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/TutorInfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/TutorInfoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/logout_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/logout_screen.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -409,7 +405,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760312421148</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fixed the TutorInfoActivity.java, DashboardActivity.java, LogOutPageActivity.java, and StudentInfoActivity.java files because they did not have the onClick methods called for the buttons, which did not lead them to the correct page">
+      <option name="closed" value="true" />
+      <created>1760316213852</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1760316213852</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -441,7 +445,8 @@
     <MESSAGE value="Tutor registration and its error mistakes done" />
     <MESSAGE value="Modified MainActivity, more precisely checkForErrors and validateAndLoginUser because I forgot to consider the case where a user writes the wrong password for an existing account" />
     <MESSAGE value="Constrained vertically OTAMS Homepage TextView in loginorregister.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Constrained vertically OTAMS Homepage TextView in loginorregister.xml" />
+    <MESSAGE value="Fixed the TutorInfoActivity.java, DashboardActivity.java, LogOutPageActivity.java, and StudentInfoActivity.java files because they did not have the onClick methods called for the buttons, which did not lead them to the correct page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the TutorInfoActivity.java, DashboardActivity.java, LogOutPageActivity.java, and StudentInfoActivity.java files because they did not have the onClick methods called for the buttons, which did not lead them to the correct page" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
