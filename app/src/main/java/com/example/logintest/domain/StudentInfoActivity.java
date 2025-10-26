@@ -168,7 +168,7 @@ public class StudentInfoActivity extends AppCompatActivity {
             String phone = phoneInput.getText().toString().trim();
             String program = programInput.getText().toString().trim();
             //First verify if the user is under the students list
-            databaseReference.child("student").orderByChild("email").equalTo(email).get().addOnCompleteListener(task -> {
+            databaseReference.child("students").orderByChild("email").equalTo(email).get().addOnCompleteListener(task -> {
                 if (!task.isSuccessful()){
                     Log.e("Registration check", "Error checking for existing 'students' node", task.getException());
                     Toast.makeText(StudentInfoActivity.this, "Could not verify email. Please try again", Toast.LENGTH_SHORT).show();
@@ -180,8 +180,8 @@ public class StudentInfoActivity extends AppCompatActivity {
                     Toast.makeText(StudentInfoActivity.this, "The email address you entered is already in use. Go to home to log in", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    //if it is not found in students path, verify in the 'pending students' path
-                    checkPendingStudents(firstName, lastName, email, phone, program, password);
+                    //if it is not found in students path, verify in the 'tutors' path: they could have entered an email that is in use for a tutor account
+                    checkIfEmailExists(firstName, lastName, email, phone, program, password);
                 }
             });
             /*
@@ -234,16 +234,56 @@ public class StudentInfoActivity extends AppCompatActivity {
             return;
         }
     }
-
-    private void checkPendingStudents(String firstName, String lastName, String email, String phone, String program, String password){
-        databaseReference.child("pending students").orderByChild("email").equalTo(email).get().addOnCompleteListener(task->{
+    private void checkIfEmailExists(String firstName, String lastName, String email, String phone, String program, String password){
+        //Verify if the email does not exist for a tutor account
+        databaseReference.child("tutors").orderByChild("email").equalTo(email).get().addOnCompleteListener(task -> {
             if (!task.isSuccessful()){
-                Log.e("Registration check", "Error checking 'pending students' node", task.getException());
+                Log.e("Registration check", "Error checking for existing 'tutors' node", task.getException());
+                Toast.makeText(StudentInfoActivity.this, "Could not verify email. Please try again", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (task.getResult().exists()){
+                //if the email was found in 'tutors' path in db
+                emailInput.setError("This email address is already in use.");
+                //The toast will not precise that it is used for a tutor account for security purposes
+                Toast.makeText(StudentInfoActivity.this, "The email address you entered is already in use. Go to home to log in.", Toast.LENGTH_LONG).show();
+            }
+            else{
+                //if it is not found in tutors path, verify in the 'pending' path
+                checkIfDenied(firstName, lastName, email, phone, program, password);
+            }
+        });
+
+    }
+    private void checkIfDenied(String firstName, String lastName, String email, String phone, String program, String password){
+        //Verify if the email has been denied by the administrator
+        databaseReference.child("denied").orderByChild("email").equalTo(email).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()){
+                Log.e("Registration check", "Error checking for existing 'denied' node", task.getException());
+                Toast.makeText(StudentInfoActivity.this, "Could not verify email. Please try again", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (task.getResult().exists()){
+                //if the email was found in 'denied' path in db
+                emailInput.setError("The Administrator denied the registration request for this email address.");
+                //Provides a (fake) phone number for contacting the administrator if they wish to resolve the matter.
+                Toast.makeText(StudentInfoActivity.this, "The Administrator denied the registration request for this email address. To resolve this matter, contact 613-724-3361.", Toast.LENGTH_LONG).show();
+            }
+            else{
+                //if it is not found in students path, verify in the 'pending' path
+                checkPendingStudents(firstName, lastName, email, phone, program, password);
+            }
+        });
+    }
+    private void checkPendingStudents(String firstName, String lastName, String email, String phone, String program, String password){
+        databaseReference.child("pending").orderByChild("email").equalTo(email).get().addOnCompleteListener(task->{
+            if (!task.isSuccessful()){
+                Log.e("Registration check", "Error checking 'pending' node", task.getException());
                 Toast.makeText(StudentInfoActivity.this, "Could not verify email. Please try again.", Toast.LENGTH_LONG).show();
                 return;
             }
             if (task.getResult().exists()){
-                //if the email was found in 'pending students' path in db
+                //if the email was found in 'pending' path in db
                 emailInput.setError("This email has already been submitted for review.");
                 Toast.makeText(StudentInfoActivity.this, "This email address is pending approval. For more information, contact the Administrator at 613-724-3361.", Toast.LENGTH_LONG).show();
 
@@ -260,17 +300,17 @@ public class StudentInfoActivity extends AppCompatActivity {
     }
     private void submitNewPendingRequest(String firstName, String lastName, String email, String phone, String program, String password){
         //Create user's ID
-        String pendingId = databaseReference.child("pending tutors").push().getKey();
+        String pendingId = databaseReference.child("pending").push().getKey();
         if (pendingId==null){
             Toast.makeText(StudentInfoActivity.this, "Could not create user ID. Please try again.", Toast.LENGTH_SHORT).show();
             return;
         }
         //Create an instance of Student class
         Student pendingStudent = new Student(firstName, lastName, email, phone, program, password);
-        databaseReference.child("pending students").child(pendingId).setValue(pendingStudent).addOnCompleteListener(task->{
+        databaseReference.child("pending").child(pendingId).setValue(pendingStudent).addOnCompleteListener(task->{
             if (task.isSuccessful()){
                 Log.d("Pending registration", "Student request submitted for: "+ email);
-                Toast.makeText(StudentInfoActivity.this,"Student registration request submitted. The Administrator will review your application shortly.", Toast.LENGTH_LONG).show();
+                Toast.makeText(StudentInfoActivity.this,"Student registration request submitted. The Administrator will review your application. Please come back later.", Toast.LENGTH_LONG).show();
 
                 //Go back to the home screen
                 Intent intent=new Intent(this, MainActivity.class);
