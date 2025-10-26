@@ -1,42 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".domain.InboxActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/backDash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="Back" />
+
+        <TextView
+            android:id="@+id/inboxTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Admin Inbox"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/inboxTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin Inbox"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:layout_marginTop="16dp"
+        android:text="Pending for Approval"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/refreshInboxButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:text="Refresh" />
-
-    <Button
-        android:id="@+id/backDash"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="289dp"
-        android:text="Back" />
-
-    <!-- You can add a ListView or RecyclerView here to display messages -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pendingRequestsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/backDash"
-        android:layout_marginTop="16dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/pending_inbox" />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Denied Requests"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/deniedRequestsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/denied_inbox" />
+
+</LinearLayout>

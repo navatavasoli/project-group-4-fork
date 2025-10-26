@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="#FAFAFA">
+
+    <TextView
+        android:id="@+id/pendingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: John Doe"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pendingEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: john.doe@example.com" />
+
+    <TextView
+        android:id="@+id/pendingRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role: Student" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/approveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Approve"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/denyButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Deny"
+            android:backgroundTint="#D32F2F"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+</LinearLayout>
