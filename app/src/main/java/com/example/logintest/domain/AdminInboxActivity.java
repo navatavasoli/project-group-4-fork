@@ -32,7 +32,7 @@ public class AdminInboxActivity extends AppCompatActivity {
     private List<PendingUser> rejectedRequests = new ArrayList<>();
     private FirebaseRegistrationRepository pendingRepository;
 
-    // --- POJO for the email message body ---
+    // email message body
     public static class Message {
         private String subject;
         private String text;
@@ -44,11 +44,15 @@ public class AdminInboxActivity extends AppCompatActivity {
             this.text = text;
         }
 
-        public String getSubject() { return subject; }
-        public String getText() { return text; }
+        public String getSubject() {
+            return subject;
+        }
+        public String getText() {
+            return text;
+        }
     }
 
-    // --- POJO for the top-level mail document ---
+    // mail document (associated with collection from Firebase Cloud)
     public static class Mail {
         private String to;
         private Message message;
@@ -60,10 +64,13 @@ public class AdminInboxActivity extends AppCompatActivity {
             this.message = message;
         }
 
-        public String getTo() { return to; }
-        public Message getMessage() { return message; }
+        public String getTo() {
+            return to;
+        }
+        public Message getMessage() {
+            return message;
+        }
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,17 +79,15 @@ public class AdminInboxActivity extends AppCompatActivity {
 
         containerLayout = findViewById(R.id.containerLayout);
         pendingOrRejectedTab = findViewById(R.id.tabLayout);
-
         pendingRepository = new FirebaseRegistrationRepository();
 
-        // to get the Tab widget in the admin_inbox.xml to function
+        // get to tab with requests
         pendingOrRejectedTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     showPendingRequests();
                 } else if (tab.getPosition() == 1) {
-                    // loading the rejected requests
                     pendingRepository.getRejectedRequests(new FirebaseRegistrationRepository.RegistrationRequestsListener() {
                         @Override
                         public void onRequestsLoaded(List<PendingUser> requests) {
@@ -91,12 +96,12 @@ public class AdminInboxActivity extends AppCompatActivity {
                         }
                     });
                 }
-            }
+                }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
-        });
+            });
 
         // loading the request cards
         pendingRepository.getPendingRequests(new FirebaseRegistrationRepository.RegistrationRequestsListener() {
@@ -108,6 +113,7 @@ public class AdminInboxActivity extends AppCompatActivity {
         });
     }
 
+    // pending requests
     private void showPendingRequests() {
         containerLayout.removeAllViews();
         for (PendingUser request: pendingRequests) {
@@ -115,6 +121,7 @@ public class AdminInboxActivity extends AppCompatActivity {
             containerLayout.addView(requestCard);
         }
     }
+    // rejected requests
     private void showRejectedRequests() {
         containerLayout.removeAllViews();
         for (PendingUser request:rejectedRequests) {
@@ -125,8 +132,8 @@ public class AdminInboxActivity extends AppCompatActivity {
 
     /**
      * Show pending information for a registered account to the Admin for their approval/rejection
-     * @param request
-     * @return
+     * @param request the request to be approved
+     * @return card view of the request
      */
     private View createPendingRequestCard(final PendingUser request) {
         View cardView = LayoutInflater.from(this).inflate(R.layout.pending_inbox, containerLayout, false);
@@ -139,16 +146,20 @@ public class AdminInboxActivity extends AppCompatActivity {
         pendingEmail.setText("Email: " + request.getPendingEmail());
         pendingRole.setText("Type: " + request.getPendingRole());
 
-
         Button acceptBtn = cardView.findViewById(R.id.acceptBtn);
+
         Button rejectBtn = cardView.findViewById(R.id.rejectBtn);
 
         acceptBtn.setOnClickListener(v -> acceptPending(request, cardView));
         rejectBtn.setOnClickListener(v -> rejectRequest(request, cardView));
-
         return cardView;
     }
 
+    /**
+     * Show rejected card information
+     * @param request the rejected card
+     * @return card view of the rejected request
+     */
     private View createRejectedRequestCard(final PendingUser request) {
         View cardView = LayoutInflater.from(this).inflate(R.layout.rejected_inbox, containerLayout, false);
         TextView rejectedName = cardView.findViewById(R.id.rejectedName);
@@ -165,12 +176,17 @@ public class AdminInboxActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Accept a pending request
+     * @param request to be accepted
+     * @param cardView the card view of the request
+     */
     private void acceptPending(PendingUser request, View cardView) {
         pendingRepository.acceptPending(request, new FirebaseRegistrationRepository.AcceptedListener() {
             @Override
             public void onAcceptSuccess() {
                 runOnUiThread(() -> {
-                    pendingRequests.remove(request); // remove from the view
+                    pendingRequests.remove(request); // remove from inbox following acceptance
                     containerLayout.removeView(cardView);
                     // send a message to the Admin
                     Toast.makeText(AdminInboxActivity.this, request.getPendingName() + " has been accepted!", Toast.LENGTH_SHORT).show();
@@ -188,8 +204,8 @@ public class AdminInboxActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     Toast.makeText(AdminInboxActivity.this, "The Request could not be approved! " + error, Toast.LENGTH_SHORT).show();
                 });
-            }
-        });
+                }
+            });
     }
 
     private void rejectRequest(final PendingUser request, final View cardView) {

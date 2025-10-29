@@ -23,24 +23,20 @@ public class AdminActivity extends AppCompatActivity {
         adminKeyEditText = findViewById(R.id.adminKey);
         adminLoginButton = findViewById(R.id.adminLoginButton);
 
-        // Admin login with key
         adminLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Use .trim() to remove leading/trailing whitespace
                 String enteredKey = adminKeyEditText.getText().toString().trim();
                 if (enteredKey.equals(ADMIN_KEY)) {
-                    // Key is correct, navigate to the dashboard
                     Intent intent = new Intent(AdminActivity.this, AdminInboxActivity.class);
-                    intent.putExtra("USER_ROLE", "Admin"); // to display role on Dashboard
+                    intent.putExtra("USER_ROLE", "Admin");
                     startActivity(intent);
 
-                    finish(); // closing AdminActivity -> debugging
+                    finish(); // used for debugging
                 } else {
-                    // Key is incorrect, show an error message
                     Toast.makeText(AdminActivity.this, "Invalid Admin Key", Toast.LENGTH_SHORT).show();
                 }
-            }
+                }
         });
     }
 
