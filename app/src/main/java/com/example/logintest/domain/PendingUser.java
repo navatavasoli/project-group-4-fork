@@ -1,15 +1,15 @@
 package com.example.logintest.domain;
 
-public class pendingUser {
+public class PendingUser {
     private String status;
     private String pendingId;
     private User user;
 
-    public pendingUser() {
+    public PendingUser() {
         // empty constructor for the firebase
     }
 
-    public pendingUser(String requestId, User user) {
+    public PendingUser(String requestId, User user) {
         this.pendingId = requestId;
         this.user = user;
         this.status = "pending";
