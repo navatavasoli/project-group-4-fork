@@ -65,20 +65,16 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.recyclerview)
 
-    // --- START OF THE FIX ---
-
-    // 1. Add the Firebase Bill of Materials (BoM).
-    // This forces all Firebase libraries to use the same, compatible version.
-    // Replace "33.1.0" with the latest version if you wish.
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
 
-    // 2. Add your Firebase libraries WITHOUT versions.
-    // The BoM now controls which version is used.
+
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-firestore")
     implementation(libs.fragment)
+    implementation(libs.firebase.messaging)
 
-    // --- END OF THE FIX ---
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
