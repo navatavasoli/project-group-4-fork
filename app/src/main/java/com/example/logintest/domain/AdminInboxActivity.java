@@ -2,6 +2,8 @@
 package com.example.logintest.domain;
 
 // this uses the email trigger extension from Firestore
+// official GitHub dev resource: https://github.com/firebase/extensions/tree/master/firestore-send-email
+
 
 import android.os.Bundle;
 import android.util.Log;

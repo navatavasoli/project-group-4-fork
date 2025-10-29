@@ -61,10 +61,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Changed name of PendingUser.java">
+    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Added additional comments to AdminActivity and AdminInboxActivity.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/AdminInboxActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/AdminInboxActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/FirebaseRegistrationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/FirebaseRegistrationRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -505,7 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761763797149</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Solved errors associated PendingUser and AdminActivity">
+      <option name="closed" value="true" />
+      <created>1761767206292</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1761767206292</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Added additional comments to AdminActivity and AdminInboxActivity.">
+      <option name="closed" value="true" />
+      <created>1761767525621</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1761767525621</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,8 +535,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Attempted to repair GitHub merging issues." />
-    <MESSAGE value="Updated landing page." />
     <MESSAGE value="Added HomepageActivity.java and LogOutPageActivity.java. Modified some of the xml to have a home button to facilitate navigation" />
     <MESSAGE value="Added Edge Constraints in the studentinformation.xml" />
     <MESSAGE value="Fixed the mistakes in studentinformation.xml" />
@@ -545,7 +558,9 @@
     <MESSAGE value="Added new xml's to support the Admin inbox xml" />
     <MESSAGE value="Implemented email notifications to user upon registration acceptance/rejection." />
     <MESSAGE value="Changed name of PendingUser.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed name of PendingUser.java" />
+    <MESSAGE value="Solved errors associated PendingUser and AdminActivity" />
+    <MESSAGE value="Added additional comments to AdminActivity and AdminInboxActivity." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added additional comments to AdminActivity and AdminInboxActivity." />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
