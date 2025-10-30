@@ -15,18 +15,22 @@ public class PendingUser {
         this.status = "pending";
     }
 
-    // Getters and Setters (required for Firebase)
+    // firebase getters and setters
     public String getRequestId() {
+
         return pendingId;
     }
     public void setRequestId(String pendingId) {
+
         this.pendingId = pendingId;
     }
 
     public User getUser() {
+
         return user;
     }
     public void setUser(User user) {
+
         this.user = user;
     }
 
@@ -35,18 +39,22 @@ public class PendingUser {
         return status;
     }
     public void setStatus(String status) {
+
         this.status = status;
     }
 
     public String getPendingName() {
+
         return user.getFirstName()+" "+ user.getLastName();
     }
 
     public String getPendingEmail() {
+
         return user.getEmail();
     }
 
     public String getPendingRole() {
+
         return user.getRole();
     }
 }
