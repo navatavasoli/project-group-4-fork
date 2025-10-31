@@ -49,8 +49,12 @@ public class FirebaseRegistrationRepository {
                     String requestId = snapshot.getKey();
 
                     // checking if the user is a Tutor or Student
-                    User user = snapshot.getValue(Tutor.class);
-                    if (user == null) {
+                    String userRole = snapshot.child("role").getValue(String.class);
+                    User user = null;
+
+                    if (userRole.equals("Tutor")) {
+                        user = snapshot.getValue(Tutor.class);
+                    } else if (userRole.equals("Student")) {
                         user = snapshot.getValue(Student.class);
                     }
 
@@ -112,7 +116,8 @@ public class FirebaseRegistrationRepository {
                 .addOnSuccessListener(aVoid -> {
                     // keeping track of the students/tutors who were accepted
                     String approvedPath = user.getRole().toLowerCase() + "s"; // I changed the path names, just made them plural
-                    String approvedId = databaseReference.child(approvedPath).push().getKey();
+                    //String approvedId = databaseReference.child(approvedPath).push().getKey();
+                    String approvedId = request.getRequestId();
 
                     databaseReference.child(approvedPath).child(approvedId).setValue(user)
                             .addOnSuccessListener(aVoid1 -> {
@@ -147,7 +152,7 @@ public class FirebaseRegistrationRepository {
                 });
     }
 
-    public void approveRejectedRequest(PendingUser request, AcceptedListener listener) {
+    public void acceptRejectedRequest(PendingUser request, AcceptedListener listener) {
         String requestId = request.getRequestId();
         User user = request.getUser();
 
@@ -155,7 +160,7 @@ public class FirebaseRegistrationRepository {
         databaseReference.child("denied").child(requestId).removeValue()
                 .addOnSuccessListener(aVoid -> {
                     String approvedPath = user.getRole().toLowerCase() + "s";
-                    String approvedId = databaseReference.child(approvedPath).push().getKey();
+                    String approvedId = request.getRequestId();
 
                     databaseReference.child(approvedPath).child(approvedId).setValue(user)
                             .addOnSuccessListener(aVoid1 -> {

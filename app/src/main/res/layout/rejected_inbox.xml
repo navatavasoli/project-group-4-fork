@@ -41,6 +41,23 @@
             android:textStyle="italic" />
 
         <TextView
+            android:id="@+id/rejectedPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone " />
+
+        <TextView
+            android:id="@+id/rejectedProgramOrDegree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ProgramOrDegree" />
+
+        <TextView
+            android:id="@+id/rejectedCourses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

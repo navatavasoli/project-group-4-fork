@@ -46,4 +46,23 @@ public class PendingUser {
     public String getPendingRole() {
         return user.getRole();
     }
+    public String getPendingPhone() {return user.getPhoneNumber();}
+    public String getPendingProgramOrDegree() {
+        if (user.getRole().equals("Student")) {
+            return ((Student) user).getProgram();
+        } else {
+            return ((Tutor) user).getHighestDegree();
+        }
+    }
+    public String getCourses() {
+        if(user.getRole().equals("Tutor")) {
+            Tutor tut = ((Tutor) user);
+            String coursesStr = "";
+            for (String c: tut.getCoursesOffered()) {
+                coursesStr += (c + ", ");
+            }
+            return coursesStr;
+        }
+        return " ";
+    }
 }

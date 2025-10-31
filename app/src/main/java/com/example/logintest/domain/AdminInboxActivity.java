@@ -81,18 +81,18 @@ public class AdminInboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_inbox);
 
-        // setting up inboxToDashBtn
+        // setting up inboxToDashBtn so Admin can go back to login page
         indexToDashButton = findViewById(R.id.inboxToDashBtn);
-
         indexToDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminInboxActivity.this, DashboardActivity.class);
-                intent.putExtra("USER_ROLE", "Admin");
+                Intent intent = new Intent(AdminInboxActivity.this, MainActivity.class);
+                //intent.putExtra("USER_ROLE", "Admin");
                 startActivity(intent);
-                finish(); // used for debugging
+                finish();
             }
         });
+
 
         containerLayout = findViewById(R.id.containerLayout);
         pendingOrRejectedTab = findViewById(R.id.tabLayout);
@@ -128,7 +128,7 @@ public class AdminInboxActivity extends AppCompatActivity {
                 showPendingRequests();
             }
         });
-    }
+    } // end of onCreate
 
     // pending requests
     private void showPendingRequests() {
@@ -156,10 +156,22 @@ public class AdminInboxActivity extends AppCompatActivity {
         TextView pendingName = cardView.findViewById(R.id.pendingName);
         TextView pendingEmail = cardView.findViewById(R.id.pendingEmail);
         TextView pendingRole = cardView.findViewById(R.id.pendingRole);
+        TextView pendingPhone= cardView.findViewById(R.id.pendingPhone);
+        TextView pendingProgramOrDegree = cardView.findViewById(R.id.pendingProgramOrDegree);
+        TextView pendingCourses = cardView.findViewById(R.id.pendingCourses);
+
 
         pendingName.setText("Name: " + request.getPendingName());
         pendingEmail.setText("Email: " + request.getPendingEmail());
         pendingRole.setText("Role : " + request.getPendingRole());
+        pendingPhone.setText("Phone #: " + request.getPendingPhone());
+
+        if(request.getPendingRole().equals("Student")) {
+            pendingProgramOrDegree.setText("Program: " + request.getPendingProgramOrDegree());
+        } else { // is a Tutor
+            pendingProgramOrDegree.setText("Degree: " + request.getPendingProgramOrDegree());
+            pendingCourses.setText("Courses: " + request.getCourses());
+        }
 
         Button acceptBtn = cardView.findViewById(R.id.acceptBtn);
 
@@ -176,13 +188,24 @@ public class AdminInboxActivity extends AppCompatActivity {
         TextView rejectedName = cardView.findViewById(R.id.rejectedName);
         TextView rejectedEmail = cardView.findViewById(R.id.rejectedEmail);
         TextView rejectedRole= cardView.findViewById(R.id.rejectedRole);
+        TextView rejectedPhone= cardView.findViewById(R.id.rejectedPhone);
+        TextView rejectedProgramOrDegree = cardView.findViewById(R.id.rejectedProgramOrDegree);
+        TextView rejectedCourses = cardView.findViewById(R.id.rejectedCourses);
 
         rejectedName.setText("Name: "+ request.getPendingName());
         rejectedEmail.setText("Email: "+ request.getPendingEmail());
         rejectedRole.setText("role: " +request.getPendingRole());
+        rejectedPhone.setText("Phone #: " + request.getPendingPhone());
+
+        if(request.getPendingRole().equals("Student")) {
+            rejectedProgramOrDegree.setText("Program: " + request.getPendingProgramOrDegree());
+        } else { // is a Tutor
+            rejectedProgramOrDegree.setText("Degree: " + request.getPendingProgramOrDegree());
+            rejectedCourses.setText("Courses: " + request.getCourses());
+        }
 
         Button acceptRejecteeBtn = cardView.findViewById(R.id.acceptRejectionBtn);
-        acceptRejecteeBtn.setOnClickListener(v -> approveRejectedRequest(request, cardView));
+        acceptRejecteeBtn.setOnClickListener(v -> acceptRejectedRequest(request, cardView));
         return cardView;
     }
 
@@ -258,8 +281,8 @@ public class AdminInboxActivity extends AppCompatActivity {
     }
 
 
-    private void approveRejectedRequest(final PendingUser request, final View cardView) {
-        pendingRepository.approveRejectedRequest(request, new FirebaseRegistrationRepository.AcceptedListener() {
+    private void acceptRejectedRequest(final PendingUser request, final View cardView) {
+        pendingRepository.acceptRejectedRequest(request, new FirebaseRegistrationRepository.AcceptedListener() {
             @Override
             public void onAcceptSuccess() {
                 runOnUiThread(() -> {

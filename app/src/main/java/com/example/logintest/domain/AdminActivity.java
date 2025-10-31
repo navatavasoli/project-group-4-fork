@@ -29,7 +29,7 @@ public class AdminActivity extends AppCompatActivity {
                 String enteredKey = adminKeyEditText.getText().toString().trim();
                 if (enteredKey.equals(ADMIN_KEY)) {
                     Intent intent = new Intent(AdminActivity.this, AdminInboxActivity.class);
-                    intent.putExtra("USER_ROLE", "Admin");
+                    //intent.putExtra("USER_ROLE", "Admin");
                     startActivity(intent);
 
                     finish(); // used for debugging
