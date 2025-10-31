@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         return everythingOK;
     }
 
-    void validateAndLoginUser() {
+    void validateAndLoginUser() { //Login successful
         if (!checkForErrors()) {
             Toast.makeText(MainActivity.this, "Login failed, please correct the fields marked in red", Toast.LENGTH_SHORT).show();
             return;
@@ -124,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
 
                             dbUser.child("tutors").child(userID).get().addOnCompleteListener(tutorTask -> {
                                 if (tutorTask.isSuccessful() && tutorTask.getResult().exists()) {
+                                    Log.d("Firebase authentication", "Login successful for:" + usernameInput);
+                                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                     //goToDashboardWithRole("Tutor");
                                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                                     intent.putExtra("USER_ROLE", "Tutor");
@@ -133,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                                 } else {
                                     dbUser.child("students").child(userID).get().addOnCompleteListener(studentTask -> {
                                         if (studentTask.isSuccessful() && studentTask.getResult().exists()) {
+                                            Log.d("Firebase authentication", "Login successful for:" + usernameInput);
+                                            Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                             //goToDashboardWithRole("Student");
                                             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                                             intent.putExtra("USER_ROLE", "Student");
@@ -142,12 +146,32 @@ public class MainActivity extends AppCompatActivity {
                                         } else { //is an admin
                                             dbUser.child("admins").child(userID).get().addOnCompleteListener(adminTask -> {
                                                 if (adminTask.isSuccessful() && adminTask.getResult().exists()) {
+                                                    Log.d("Firebase authentication", "Login successful for:" + usernameInput);
+                                                    Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                                     //goToDashboardWithRole("Admin");
                                                     Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                                                     intent.putExtra("USER_ROLE", "Admin");
                                                     startActivity(intent);
 
                                                     finish();
+                                                }else{ //verify if it is denied or if it is pending
+                                                    Log.e("Firebase Authentication", "User "+userID+" authenticated but no role in the database.");
+                                                    databaseReference.child("pending").orderByChild("email").equalTo(usernameInput).get().addOnCompleteListener(pendingTask->{
+                                                        if(pendingTask.isSuccessful() && pendingTask.getResult().exists()){
+                                                            username.setError("This email address is pending approval.");
+                                                            Toast.makeText(MainActivity.this, "You cannot log in at this time. Please come back later.", Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(MainActivity.this, "Contact the Administrator at 613-724-3361 to resolve this matter.", Toast.LENGTH_LONG).show();
+                                                        }else{
+                                                            databaseReference.child("denied").orderByChild("email").equalTo(usernameInput).get().addOnCompleteListener(deniedTask->{
+                                                                if(deniedTask.isSuccessful() && deniedTask.getResult().exists()){
+                                                                    username.setError("The registration request for this email address has been denied.");
+                                                                    Toast.makeText(MainActivity.this, "The Administrator denied the registration request for this email.", Toast.LENGTH_LONG).show();
+                                                                    Toast.makeText(MainActivity.this, "Contact the Administrator at 613-724-3361 to resolve this matter.", Toast.LENGTH_LONG).show();
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                    mAuth.signOut();
                                                 }
                                             });
                                         }
@@ -155,9 +179,6 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                         }
-                Log.d("Firebase authentication", "Login successful for:" + usernameInput);
-                Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                //goToDashboard(null);
             } else{
                 Log.w("Firebase authentication", "Login failed", task.getException());
                 try {
