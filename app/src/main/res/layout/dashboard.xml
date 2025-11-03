@@ -26,7 +26,10 @@
         android:id="@+id/welcome_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="121dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -35,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome! Your role is: "
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:id="@+id/user_role"
@@ -57,5 +60,15 @@
         android:layout_marginTop="24dp"
         android:text="View Inbox"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/viewCalendarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginBottom="454dp"
+        android:text="View Calendar" />
 
 </RelativeLayout>

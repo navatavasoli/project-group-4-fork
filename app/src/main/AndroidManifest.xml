@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginTest">
-
+        <activity
+            android:name=".CalendarViewActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,16 +22,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Add more activities as needed -->
+        </activity> <!-- Add more activities as needed -->
         <activity android:name=".TutorInfoActivity" />
         <activity android:name=".StudentInfoActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".LogOutPageActivity" />
         <activity android:name=".AdminInboxActivity" />
-
     </application>
 
 </manifest>

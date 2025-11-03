@@ -34,6 +34,8 @@ public class TutorInfoActivity extends AppCompatActivity {
     EditText coursesInput;
     Button submitButton;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class TutorInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 validateAndRegisterUser();
             }
+
         });
     }
     // Home button

@@ -15,6 +15,9 @@ public class DashboardActivity extends AppCompatActivity {
     TextView userRole;
     Button adminInboxButton;
 
+    Button viewCalendarButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,15 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setContentView(R.layout.admin_inbox);
                 //Intent intent = new Intent(Inboxy.this, InboxActivity.class);
+                //startActivity(intent);
+            }
+        });
+
+        viewCalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.activity_calendar_view);
+                //Intent intent = new Intent(DashboardActivity.this, CalendarViewActivity.class);
                 //startActivity(intent);
             }
         });
