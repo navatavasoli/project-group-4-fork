@@ -29,6 +29,7 @@
         <activity android:name=".AdminActivity" />
         <activity android:name=".LogOutPageActivity" />
         <activity android:name=".AdminInboxActivity" />
+        <activity android:name=".TimeSlot" />
     </application>
 
 </manifest>

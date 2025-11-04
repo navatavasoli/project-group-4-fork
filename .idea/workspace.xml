@@ -10,6 +10,16 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_calendar_view.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_time_slot.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/admin_inbox.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
@@ -62,15 +72,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Removed a few comments in Student and Tutor Activity classes, also I configured the messages according to the user's status in the MainActivity.java class">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/CalendarViewActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_calendar_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/TimeSlot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_time_slot.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/CalendarViewActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/CalendarViewActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/DashboardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/DashboardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/TutorInfoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/logintest/domain/TutorInfoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dashboard.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +88,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\navat\.android\avd\Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/parishoang/.android/avd/Medium_Phone_2.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -148,7 +156,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/uOttawaSEG/project-group-4.git&quot;,
-    &quot;accountId&quot;: &quot;d9fc9902-50b8-4516-b344-c0c9fc282333&quot;
+    &quot;accountId&quot;: &quot;befa4524-63ef-48a3-a40e-3e72f01891b7&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -181,11 +189,6 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.android.studio.ml.bot.mainConfigurable&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="android.template.1257759940">
-      <recent name="com.example.logintest.domain" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="LoginTest.app" />
@@ -595,12 +598,12 @@
       <map>
         <entry key="com.example.logintest.domain">
           <value>
-            <CheckInfo lastCheckTimestamp="1762132681627" />
+            <CheckInfo lastCheckTimestamp="1762209884432" />
           </value>
         </entry>
         <entry key="com.example.logintest.domain.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1762132681639" />
+            <CheckInfo lastCheckTimestamp="1762209884437" />
           </value>
         </entry>
       </map>
