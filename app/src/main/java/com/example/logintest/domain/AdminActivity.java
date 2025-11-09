@@ -28,6 +28,7 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String enteredKey = adminKeyEditText.getText().toString().trim();
                 if (enteredKey.equals(ADMIN_KEY)) {
+                    Toast.makeText(AdminActivity.this, "Admin Login Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AdminActivity.this, AdminInboxActivity.class);
                     //intent.putExtra("USER_ROLE", "Admin");
                     startActivity(intent);

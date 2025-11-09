@@ -86,6 +86,7 @@ public class AdminInboxActivity extends AppCompatActivity {
         indexToDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(AdminInboxActivity.this, "Admin log out successful", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(AdminInboxActivity.this, MainActivity.class);
                 //intent.putExtra("USER_ROLE", "Admin");
                 startActivity(intent);
