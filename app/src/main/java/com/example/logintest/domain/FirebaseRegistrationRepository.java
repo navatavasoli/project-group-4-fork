@@ -40,7 +40,7 @@ public class FirebaseRegistrationRepository {
 
     public void getPendingRequests(RegistrationRequestsListener listener) {
         // access tutor/student nodes in "pending" branch of firebase
-        databaseReference.child("pending").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("pending").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<PendingUser> requests =new ArrayList<>();
@@ -76,7 +76,7 @@ public class FirebaseRegistrationRepository {
 
     public void getRejectedRequests( RegistrationRequestsListener listener) {
         // added denied to firebase paths
-        databaseReference.child("denied").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("denied").addValueEventListener(new ValueEventListener() {
              @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<PendingUser> requests = new ArrayList<>();
@@ -85,9 +85,14 @@ public class FirebaseRegistrationRepository {
                     String requestId = snapshot.getKey();
 
                     // check if it's a Tutor or Student
-                     User user = snapshot.getValue(Tutor.class);
-                    if (user == null) {
-                        user = snapshot.getValue(Student.class);
+                     String userRole=snapshot.child("role").getValue(String.class);
+                     User user = null;
+                    if (userRole != null) {
+                        if (userRole.equals("Tutor")){
+                            user = snapshot.getValue(Tutor.class);
+                        } else if (userRole.equals("Student")) {
+                            user = snapshot.getValue(Student.class);
+                        }
                     }
 
                     if (user != null && requestId != null) {

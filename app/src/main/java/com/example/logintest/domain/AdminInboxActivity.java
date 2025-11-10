@@ -98,37 +98,44 @@ public class AdminInboxActivity extends AppCompatActivity {
         containerLayout = findViewById(R.id.containerLayout);
         pendingOrRejectedTab = findViewById(R.id.tabLayout);
         pendingRepository = new FirebaseRegistrationRepository();
-
-        // get to tab with requests
+        // loading the request cards
+        pendingRepository.getPendingRequests(new FirebaseRegistrationRepository.RegistrationRequestsListener() {
+            @Override
+            public void onRequestsLoaded(List<PendingUser> requests) {
+                pendingRequests = requests;
+                if (pendingOrRejectedTab.getSelectedTabPosition()==0) {
+                    showPendingRequests();
+                }
+            }
+        });
+        pendingRepository.getRejectedRequests(new FirebaseRegistrationRepository.RegistrationRequestsListener(){
+            @Override
+            public void onRequestsLoaded(List<PendingUser> requests){
+                rejectedRequests=requests;
+                if (pendingOrRejectedTab.getSelectedTabPosition()==1){
+                    showRejectedRequests();
+                }
+            }
+        });
         pendingOrRejectedTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition()== 0) {
                     showPendingRequests();
                 } else if (tab.getPosition()==1) {
-                    pendingRepository.getRejectedRequests(new FirebaseRegistrationRepository.RegistrationRequestsListener() {
-                        @Override
-                        public void onRequestsLoaded(List<PendingUser> requests) {
-                            rejectedRequests = requests;
-                            showRejectedRequests();
-                        }
-                    });
+                    showRejectedRequests();
                 }
-                }
+            }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
             @Override
             public void onTabReselected(TabLayout.Tab tab) {}
-            });
-
-        // loading the request cards
-        pendingRepository.getPendingRequests(new FirebaseRegistrationRepository.RegistrationRequestsListener() {
-            @Override
-            public void onRequestsLoaded(List<PendingUser> requests) {
-                pendingRequests = requests;
-                showPendingRequests();
-            }
         });
+        //set the initial load to pending
+        TabLayout.Tab pendingTab=pendingOrRejectedTab.getTabAt(0);
+        if(pendingTab != null){
+            pendingTab.select();
+        }
     } // end of onCreate
 
     // pending requests
@@ -217,7 +224,7 @@ public class AdminInboxActivity extends AppCompatActivity {
             @Override
             public void onAcceptSuccess() {
                 runOnUiThread(() -> {
-                    pendingRequests.remove(request); // remove from inbox following acceptance
+                    //pendingRequests.remove(request); // remove from inbox following acceptance
                     containerLayout.removeView(cardView);
                     // send a message to the Admin
                     Toast.makeText(AdminInboxActivity.this, request.getPendingName() + " has been accepted!", Toast.LENGTH_SHORT).show();
@@ -244,8 +251,8 @@ public class AdminInboxActivity extends AppCompatActivity {
             @Override
             public void onRejectionSuccess() {
                 runOnUiThread(() -> {
-                    pendingRequests.remove(request);
-                    rejectedRequests.add(request);
+                    //pendingRequests.remove(request);
+                    //rejectedRequests.add(request);
                     containerLayout.removeView(cardView);
                     Toast.makeText(AdminInboxActivity.this, request.getPendingName() + " has been rejected", Toast.LENGTH_SHORT).show();
                     if (pendingRequests.isEmpty()) {
