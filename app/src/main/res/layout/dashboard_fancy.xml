@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="#101526">
+
+    <TextView
+        android:id="@+id/dashboardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/dashboard_title"
+        android:textSize="26sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/LogOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:onClick="goToLogOut"
+        android:text="@string/logout_button_text"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#FF5C7A"
+        android:elevation="2dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dashboardTitle"
+        android:layout_marginTop="40dp"
+        android:scaleType="fitCenter"
+        android:alpha="0.95"
+        app:srcCompat="@drawable/logo" />
+
+    <LinearLayout
+        android:id="@+id/welcome_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/imageView3"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome! Your role is:"
+            android:textSize="18sp"
+            android:textColor="#E0E4FF"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/user_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/inboxButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/welcome_container"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:text="View Inbox"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#3D7AFD"
+        android:elevation="3dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/viewSessionsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/inboxButton"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="View Sessions"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#4CAF50"
+        android:elevation="3dp" />
+
+    <Button
+        android:id="@+id/viewInbox"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/viewSessionsBtn"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="View Inbox"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#3D7AFD"
+        android:elevation="3dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/viewCalendarButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/viewInbox"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="View Calendar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:backgroundTint="#FFB74D"
+        android:elevation="3dp"
+        android:visibility="gone" />
+
+</RelativeLayout>
