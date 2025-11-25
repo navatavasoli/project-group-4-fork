@@ -25,7 +25,17 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/admin_inbox_fancy.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adminlogin.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/adminlogin_fancy.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
         </config>
@@ -51,7 +61,18 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/loginorregister_fancy.xml">
+        <config>
+          <state>Portrait</state>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/logout_screen.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/logout_screen_fancy.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
         </config>
@@ -61,7 +82,17 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/pending_inbox_fancy.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/rejected_inbox.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/rejected_inbox_fancy.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
         </config>
@@ -71,12 +102,28 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/sessions_list_fancy.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/studentinformation.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/studentinformation_fancy.xml">
+        <config>
+          <state>Portrait</state>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/tutor_inbox.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/tutor_inbox_fancy.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
         </config>
@@ -86,7 +133,17 @@
           <theme>@style/Theme.LoginTest</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/tutor_view_sessions_fancy.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/tutorinfo.xml">
+        <config>
+          <theme>@style/Theme.LoginTest</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/tutorinfo_fancy.xml">
         <config>
           <theme>@style/Theme.LoginTest</theme>
         </config>
@@ -97,8 +154,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Adjusted the UI for the dashboard.xml file and implemented a logo.">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/loginorregister_fancy.xml" afterDir="false" />
+    <list default="true" id="49f9b6ab-01b4-4b1f-a7c5-4db121387015" name="Changes" comment="Adjusted UI of the login page.">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/admin_inbox_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/adminlogin_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/logout_screen_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/pending_inbox_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/rejected_inbox_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/sessions_list_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/studentinformation_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/tutor_inbox_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/tutor_view_sessions_fancy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/tutorinfo_fancy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -725,7 +792,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764028834669</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Adjusted UI of the login page.">
+      <option name="closed" value="true" />
+      <created>1764028950465</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1764028950465</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -740,7 +815,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Constrained vertically OTAMS Homepage TextView in loginorregister.xml" />
     <MESSAGE value="Fixed the TutorInfoActivity.java, DashboardActivity.java, LogOutPageActivity.java, and StudentInfoActivity.java files because they did not have the onClick methods called for the buttons, which did not lead them to the correct page" />
     <MESSAGE value="Modified logout_screen.xml and DashboardActivity.java" />
     <MESSAGE value="In DashboardActivity.java, I changed one of the parameters of the Intent created in the onClick method because when we would click on log out, it would lead to the homepage instead of the logout screen" />
@@ -765,7 +839,8 @@
     <MESSAGE value="Fixed the bug where the app glitches when a user moves from pending to rejected in the admin inbox" />
     <MESSAGE value="Fixed the Requests card of admin inbox because there was an extra comma that should not have been displayed" />
     <MESSAGE value="Adjusted the UI for the dashboard.xml file and implemented a logo." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted the UI for the dashboard.xml file and implemented a logo." />
+    <MESSAGE value="Adjusted UI of the login page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusted UI of the login page." />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
